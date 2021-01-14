@@ -12,8 +12,6 @@ import time
 import sys
 import os
 
-
-
 logging.disable(logging.DEBUG)
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -39,6 +37,11 @@ try:
     requests_array = []
 
     folder_name = driver.find_element_by_xpath('/html/body/div/section/div/div/div[5]/h1').text
+    
+    if ':' in folder_name:
+        
+        folder_name = folder_name.replace(':','-')
+    
     
     for i in range(1, number_of_pages+1):
     
@@ -68,19 +71,30 @@ except  NoSuchElementException as e:
 
 
 
-
-os.mkdir(f'{os.getcwd()}\\{folder_name}')
-logging.info(f'Creando directorio: {folder_name}.')
+if not os.path.exists('.\\Mangas'):
+        
+    os.mkdir('.\\Mangas')
     
+    os.mkdir(f'.\\Mangas\\{folder_name}')
+    
+    logging.info(f'Creando directorio: {folder_name}.')
+    
+else:
+    
+    os.mkdir(f'.\\Mangas\\{folder_name}')
+    logging.info(f'Creando directorio: {folder_name}.')
+
+
 page = 1
 for request in requests_array:
     logging.info(f'Construyendo pag num {page}')
     if request.status_code is 200:
-        with open(f'{folder_name}\\page{page}.png', 'wb') as f:
+        with open(f'.\\Mangas\\{folder_name}\\page{page}.png', 'wb') as f:
             for chunk in request:
                 f.write(chunk) 
     page+=1
     
+logging.info(f'Capitulo guardado en .\\Mangas\\{folder_name}.')
 driver.close()
 
     
