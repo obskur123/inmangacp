@@ -41,13 +41,16 @@ Ahora solo queda reiniciar el sistema o reiniciar el explorer de Windows para qu
 
 ```
 C:\Users\Pepe> inmangacp <URL DEL CAPITULO>
+
+C:\Users\Pepe> inmangacp https://inmanga.com/ver/manga/Boku-no-Hero-Academia/297/aa1ce33a-1017-4057-a11f-86b55151cf63?page=13de3e2d-9051-448a-a741-c4793634b0bc
+
 ```
 
 ## Consideraciones
 
 - No parece funcionar cuando es ejecutado a traves de Windows Powershell.
 - Debido a que lo empaquete con Pyinstaller es altamente probable que Windows Defender crea que es un virus, no lo es, se debe agregar una excepción al archivo de la siguiente forma: https://support.microsoft.com/en-us/windows/add-an-exclusion-to-windows-security-811816c0-4dfd-af4a-47e4-c301afe13b26
-- Los capitulos se estan guardando en el directorio "Users\\tu usuario" Windows.
+- Los capitulos se estan guardando en el directorio donde es abierta la terminal de Windows. Por lo general, se guardan en "C:\User\tuUsuario\Mangas"
 
 
 
