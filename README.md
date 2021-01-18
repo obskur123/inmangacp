@@ -13,7 +13,7 @@ link de descarga inmangacp: https://mega.nz/folder/ilcXASrB#fPB9yJrwDRoeHc3mmPDe
 
 ## Utilización
 
-La idea de esta herramienta es que se utilice como un programa dentro de la línea de comandos. 
+La idea de esta herramienta es que se utilice como un programa dentro de la línea de comandos (cmd). 
 
 La dirección donde se encuentre el ejecutable se debe agregar al PATH del sistema para que sea más cómodo y accesible.
 Desde su ejecucion comenzaran a aparecer una serie de mensajes que informarán que está ocurriendo y en el peor de los casos soltara un error de URL inválida o que no se ha podido localizar el "elemento", lo que terminara la ejecución; Esto quiere decir que quizás la página cargo lento y el programa ha sido incapaz de resolver el HTML o quizás la página ha sido actualizada, por lo tanto, el HTML dejo de ser el mismo. 
