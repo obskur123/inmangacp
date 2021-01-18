@@ -9,7 +9,7 @@ o en su defecto, colocarlo en la misma dirección que inmangacp.
 
 link de descarga geckodriver: https://github.com/mozilla/geckodriver/releases
 
-link de descarga inmangacp: https://mega.nz/folder/ilcXASrB#fPB9yJrwDRoeHc3mmPDeow
+link de descarga inmangacp: https://github.com/obskur123/inmangacp/releases/tag/v1.0
 
 ## Utilización
 
