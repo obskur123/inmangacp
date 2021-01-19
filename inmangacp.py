@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.remote.remote_connection import LOGGER
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
@@ -68,23 +69,17 @@ try:
         
         total_size_in_bytes = int(r.headers.get('content-length', 0))
         
-        block_size = 1024
-        
         progress_bar = tqdm(total=total_size_in_bytes, unit='iB', unit_scale=True)
-        
-        logging.info(f'Descargando pag {i}.')
-        
+                
         if r.status_code is 200:
             with open(f'.\\Mangas\\{folder_name}\\page{i}.png', 'wb') as f:
-                for chunk in r.iter_content(block_size):
+                for chunk in r.iter_content(1024):
                     progress_bar.update(len(chunk))
                     f.write(chunk) 
-
+            progress_bar.close()
 
         next_button = driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/div[1]/div/div/div[5]/div/button[2]').click()
         
-    
-    
 except InvalidArgumentException as e:
     logging.error(f'URL Invalida/No es una URL. - {e.msg}')
     driver.close()
@@ -94,9 +89,13 @@ except  NoSuchElementException as e:
     logging.error(f'Incapaz de localizar elemento. - {e.msg}')
     driver.close()
     sys.exit('Solo acepto URL\'s de capitulos de inmanga.')
+    
+except TimeoutException as e:
+    
+    logging.error(f'Tiempo Expirado {e.msg}')
+    driver.close()
+    sys.exit()
 
-    
-    
 logging.info(f'Capitulo guardado en .\\Mangas\\{folder_name}.')
 driver.close()
 
